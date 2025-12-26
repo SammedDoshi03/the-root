@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
-import { Experience } from './components/Experience';
-import { Projects } from './components/Projects';
-import { Blog } from './components/Blog';
-import { Skills } from './components/Skills';
-import { Contact } from './components/Contact';
-import { Footer } from './components/Footer';
-import { SnowEffect } from './components/SnowEffect';
-import { ScrollToTop } from './components/ScrollToTop';
+// import './index.css'; // Removed as it is imported in index.tsx
+
+const Experience = React.lazy(() => import('./components/Experience').then(module => ({ default: module.Experience })));
+const Projects = React.lazy(() => import('./components/Projects').then(module => ({ default: module.Projects })));
+const Blog = React.lazy(() => import('./components/Blog').then(module => ({ default: module.Blog })));
+const Skills = React.lazy(() => import('./components/Skills').then(module => ({ default: module.Skills })));
+const Contact = React.lazy(() => import('./components/Contact').then(module => ({ default: module.Contact })));
+const Footer = React.lazy(() => import('./components/Footer').then(module => ({ default: module.Footer })));
+const SnowEffect = React.lazy(() => import('./components/SnowEffect').then(module => ({ default: module.SnowEffect })));
+const ScrollToTop = React.lazy(() => import('./components/ScrollToTop').then(module => ({ default: module.ScrollToTop })));
 
 function App() {
   const [isSnowing, setIsSnowing] = useState(false);
@@ -18,19 +20,25 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      {isSnowing && <SnowEffect />}
+      <Suspense fallback={null}>
+        {isSnowing && <SnowEffect />}
+      </Suspense>
       <Header toggleSnow={toggleSnow} isSnowing={isSnowing} />
       <main>
         <Hero />
         <About />
-        <Experience />
-        <Projects />
-        <Blog />
-        <Skills />
-        <Contact />
+        <Suspense fallback={<div className="h-96 flex items-center justify-center">Loading...</div>}>
+          <Experience />
+          <Projects />
+          <Blog />
+          <Skills />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
-      <ScrollToTop />
+      <Suspense fallback={null}>
+        <Footer />
+        <ScrollToTop />
+      </Suspense>
     </div>
   );
 }
