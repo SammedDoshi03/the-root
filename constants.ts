@@ -32,7 +32,7 @@ export const PROJECTS: Project[] = [
     category: "Mobile & AI",
     description: "An intelligent nutrition tracking application designed to promote mindful eating habits through AI-powered food analysis and personalized health insights.",
     tech: ["React Native", "GenAI", "TypeScript", "Firebase"],
-    image: "https://picsum.photos/id/292/800/600",
+    image: "https://image.pollinations.ai/prompt/mobile%20app%20ui%20design%20mindful%20eating%20nutrition%20tracker%20food%20recognition%20ai%20clean%20modern%20interface?width=1280&height=720&nologo=true&seed=101",
     github: "https://github.com/SammedDoshi03/MindfulBite",
     highlights: [
       "Implemented AI-based food recognition for instant logging.",
@@ -45,7 +45,7 @@ export const PROJECTS: Project[] = [
     category: "Mobile & AI",
     description: "Developed a consumer-facing mobile app using Gemini GenAI API for personalized travel itineraries, real-time suggestions, and budget optimization. Architected the full application including Firestore data models.",
     tech: ["React Native", "GenAI", "Gemini API", "Firestore", "Google Cloud"],
-    image: "https://picsum.photos/id/48/800/600",
+    image: "https://image.pollinations.ai/prompt/mobile%20app%20ui%20travel%20planner%20itinerary%20gemini%20ai%20map%20interface%20vibrant%20modern?width=1280&height=720&nologo=true&seed=102",
     github: "https://github.com/SammedDoshi03/AI-Powered-Travel-Planner",
     highlights: [
       "Built complete '0-to-1' product focusing on AI-driven UX.",
@@ -58,7 +58,7 @@ export const PROJECTS: Project[] = [
     category: "Mobile",
     description: "Spearheaded a full-stack React Native app for browsing and purchasing daily dairy products. Focused on dynamic subscription models and category mapping.",
     tech: ["React Native", "Redux", "Firebase Auth", "Firestore"],
-    image: "https://picsum.photos/id/225/800/600",
+    image: "https://image.pollinations.ai/prompt/mobile%20app%20ui%20dairy%20products%20milk%20delivery%20e-commerce%20fresh%20white%20blue%20clean?width=1280&height=720&nologo=true&seed=103",
     github: "https://github.com/SammedDoshi03/E-Commerce-Dairy-Product-App",
     highlights: [
       "Achieved 70% completion in 2 months with a 2-developer team.",
@@ -71,7 +71,7 @@ export const PROJECTS: Project[] = [
     category: "Mobile",
     description: "Developed a React Native mobile tool POC for allocating and managing assets and employee info in small organizations.",
     tech: ["React Native", "Redux Toolkit", "Firebase", "Cloud Messaging"],
-    image: "https://picsum.photos/id/180/800/600",
+    image: "https://image.pollinations.ai/prompt/mobile%20app%20ui%20asset%20management%20system%20dashboard%20inventory%20business%20blue%20corporate?width=1280&height=720&nologo=true&seed=104",
     github: "https://github.com/SammedDoshi03/Asset-Management-System",
     highlights: [
       "Delivered POC ahead of deadline.",
@@ -84,7 +84,7 @@ export const PROJECTS: Project[] = [
     category: "Web & ML",
     description: "Web-based system using MERN stack to analyze consumer goods price variations via e-commerce data and social media sentiment.",
     tech: ["MERN Stack", "Web Scraping", "Sentiment Analysis", "Mocha"],
-    image: "https://picsum.photos/id/20/800/600",
+    image: "https://image.pollinations.ai/prompt/web%20dashboard%20analytics%20charts%20commodity%20price%20analysis%20data%20visualization%20dark%20mode?width=1280&height=720&nologo=true&seed=105",
     github: "https://github.com/SammedDoshi03/Commodity-Price-Analysis",
     highlights: [
       "Combined web scraping with Twitter sentiment analysis.",
@@ -97,7 +97,7 @@ export const PROJECTS: Project[] = [
     category: "Mobile",
     description: "A Flutter application integrating multiple social media authentication methods (Google, Facebook) with Firebase backend.",
     tech: ["Flutter", "Firebase", "Dart", "Social Auth"],
-    image: "https://picsum.photos/id/325/800/600",
+    image: "https://image.pollinations.ai/prompt/mobile%20app%20ui%20social%20media%20login%20screen%20flutter%20gradient%20purple%20modern%20sleek?width=1280&height=720&nologo=true&seed=106",
     link: "https://www.youtube.com/watch?v=mmFpqPYjPYQ&ab_channel=SAM",
     github: "https://github.com/SammedDoshi03/Forelsket",
     highlights: [
@@ -111,7 +111,7 @@ export const PROJECTS: Project[] = [
     category: "Web",
     description: "Django-based web platform for sharing creative content like poems and articles, uniquely tagged with photos.",
     tech: ["Django", "Python", "PL/SQL", "HTML/CSS"],
-    image: "https://picsum.photos/id/435/800/600",
+    image: "https://image.pollinations.ai/prompt/website%20ui%20creative%20writing%20blog%20poetry%20minimalist%20typography%20elegant%20artsy?width=1280&height=720&nologo=true&seed=107",
     github: "https://github.com/SammedDoshi03/The-Bus-Stop-Guy",
     highlights: [
       "Architected application workflow and security.",
@@ -124,7 +124,7 @@ export const PROJECTS: Project[] = [
     category: "Web",
     description: "Automated dating process web application enabling users to find connections and maintain virtual relationships securely.",
     tech: ["Java", "JSP", "MySQL", "Apache Tomcat"],
-    image: "https://picsum.photos/id/535/800/600",
+    image: "https://image.pollinations.ai/prompt/website%20ui%20matchmaking%20dating%20profiles%20connections%20love%20hearts%20red%20theme%20classic?width=1280&height=720&nologo=true&seed=108",
     github: "https://github.com/SammedDoshi03/Virtual-Matchmaking-System",
     highlights: [
       "Designed using Java Servlets and JDBC.",
@@ -137,7 +137,7 @@ export const PROJECTS: Project[] = [
     category: "Technical Writing",
     description: "Project-cum-article for Medium Blog implementing React Components, AuthProvider, User Management, Firebase authentication services.",
     tech: ["ReactJS", "Firebase", "Technical Writing"],
-    image: "https://picsum.photos/id/635/800/600",
+    image: "https://image.pollinations.ai/prompt/technical%20article%20header%20react%20code%20firebase%20logo%20developer%20screen%20programming?width=1280&height=720&nologo=true&seed=109",
     link: "https://link.medium.com/ZzQJpuPdKqb",
     github: "https://github.com/SammedDoshi03/Firebase-Auth-ReactJS",
     highlights: [

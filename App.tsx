@@ -9,6 +9,7 @@ import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { SnowEffect } from './components/SnowEffect';
+import { ScrollToTop } from './components/ScrollToTop';
 
 function App() {
   const [isSnowing, setIsSnowing] = useState(false);
@@ -29,6 +30,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
