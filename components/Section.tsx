@@ -12,13 +12,13 @@ interface SectionProps {
 
 export const Section: React.FC<SectionProps> = ({ id, title, subtitle, children, className = "", light = false }) => {
   return (
-    <section 
-      id={id} 
-      className={`py-24 lg:py-32 px-4 sm:px-6 lg:px-8 scroll-mt-24 transition-colors duration-300 ${light ? 'bg-slate-50' : 'bg-white'} ${className}`}
+    <section
+      id={id}
+      className={`py-16 lg:py-24 px-4 sm:px-6 lg:px-8 scroll-mt-24 transition-colors duration-300 ${light ? 'bg-slate-50' : 'bg-white'} ${className}`}
     >
       <div className="max-w-7xl mx-auto">
         {(title || subtitle) && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}

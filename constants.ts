@@ -6,7 +6,7 @@ export const SOCIAL_LINKS = {
   email: "sammeddoshi03.sd@gmail.com",
 };
 
-export const ABOUT_TEXT = "Senior Software Engineer with 3.5+ years of experience specializing in scalable React Native, TypeScript, and GenAI-enabled enterprise applications. Proven ability to deliver high-performance solutions for global Banking and Energy sectors. Strengths include bridging Native Modules, architecting scalable design systems, and leading accessibility (a11y) initiatives.";
+export const ABOUT_TEXT = "I'm a Senior Software Engineer who turns caffeine into clean, scalable code. With 3.5+ years of experience, I specialize in building high-performance React Native apps and GenAI-powered web solutions. Whether I'm architecting enterprise systems, bridging native modules, or teaching AI to chart complex data with Universal Adaptive Bars, I'm obsessed with creating seamless user experiences. My comfort zone? The intersection of pixel-perfect design and robust backend logic.";
 
 export const EXPERIENCES: Experience[] = [
   {
@@ -27,6 +27,20 @@ export const EXPERIENCES: Experience[] = [
 ];
 
 export const PROJECTS: Project[] = [
+  {
+    title: "Universal Adaptive Bars",
+    category: "Web & Library",
+    description: "A smart, cross-platform charting library for React and React Native that adapts to your data and layout. Seamlessly supports both responsive web and adaptive mobile visualizations.",
+    tech: ["React", "React Native", "TypeScript", "D3", "Library"],
+    image: "/universal-adaptive-bars.png",
+    github: "https://github.com/SammedDoshi03/universal-adaptive-bars",
+    link: "https://www.npmjs.com/package/universal-adaptive-bars",
+    highlights: [
+      "Unified charting API for React and React Native.",
+      "Automatically adapts bars to data density and screen size.",
+      "Zero-config responsive design with smart defaults."
+    ]
+  },
   {
     title: "MindfulBite",
     category: "Mobile & AI",
@@ -153,42 +167,65 @@ export const SKILLS: SkillCategory[] = [
     title: "Languages & Core",
     icon: "code",
     skills: [
-      { name: "TypeScript", iconKey: "typescript/typescript-original" },
-      { name: "JavaScript", iconKey: "javascript/javascript-original" },
-      { name: "Java", iconKey: "java/java-original" },
-      { name: "HTML5", iconKey: "html5/html5-original" },
-      { name: "CSS3", iconKey: "css3/css3-original" }
+      { name: "TypeScript", iconKey: "typescript/typescript-original", funTooltip: "JavaScript that behaves 🧐" },
+      { name: "JavaScript", iconKey: "javascript/javascript-original", funTooltip: "I run the internet 🌐" },
+      { name: "Java", iconKey: "java/java-original", funTooltip: "Old reliable ☕" },
+      { name: "HTML5", iconKey: "html5/html5-original", funTooltip: "Structure is everything 🧱" },
+      { name: "CSS3", iconKey: "css3/css3-original", funTooltip: "Making things pretty 🎨" }
     ]
   },
   {
     title: "Mobile & Frontend",
     icon: "layout",
     skills: [
-      { name: "React Native", iconKey: "react/react-original" },
-      { name: "React.js", iconKey: "react/react-original" },
-      { name: "Redux", iconKey: "redux/redux-original" },
-      { name: "Tailwind CSS", iconKey: "tailwindcss/tailwindcss-original" }
+      { name: "React Native", iconKey: "react/react-original", funTooltip: "Write once, run everywhere (mostly) 📱" },
+      { name: "React.js", iconKey: "react/react-original", funTooltip: "Components everywhere ⚛️" },
+      { name: "Next.js", iconKey: "nextjs/nextjs-original", funTooltip: "React on steroids 🚀" },
+      { name: "Redux", iconKey: "redux/redux-original", funTooltip: "State management wizardry A🪄" },
+      { name: "Tailwind CSS", iconKey: "tailwindcss/tailwindcss-original", funTooltip: "Styling at lightspeed ⚡" }
+    ]
+  },
+  {
+    title: "Development Tools",
+    icon: "tool",
+    skills: [
+      { name: "VS Code", iconKey: "vscode/vscode-original", funTooltip: "Home sweet home 🏠" },
+      { name: "Xcode", iconKey: "xcode/xcode-original", funTooltip: "iOS HQ 🍎" },
+      { name: "Android Studio", iconKey: "android/android-original", funTooltip: "Where Androids dream 🤖" },
+      { name: "Git", iconKey: "git/git-original", funTooltip: "Time travel machine 🕰️" },
+      { name: "Jira", iconKey: "jira/jira-original", funTooltip: "Ticket master 🎫" },
+      { name: "Postman", iconKey: "postman/postman-original", funTooltip: "API Testing 🚀" }
+    ]
+  },
+  {
+    title: "CI/CD & Deployment",
+    icon: "cicd",
+    skills: [
+      { name: "GitHub Actions", iconKey: "github/github-original", funTooltip: "Automate all the things 🤖" },
+      { name: "Docker", iconKey: "docker/docker-original", funTooltip: "It works on my machine! 🐳" },
+      { name: "Google Play", iconKey: "android/android-original", funTooltip: "Release to billions 🌍" },
+      { name: "App Store", iconKey: "apple/apple-original", funTooltip: "Strictly for review �" },
+      { name: "Jest", iconKey: "jest/jest-plain", funTooltip: "Testing is not optional ✅" }
+    ]
+  },
+  {
+    title: "AI & GenAI",
+    icon: "ai",
+    skills: [
+      { name: "Antigravity", iconKey: "https://www.google.com/s2/favicons?domain=antigravity.google&sz=128", funTooltip: "Coding with superpowers 🦸‍♂️" },
+      { name: "GitHub Copilot", iconKey: "github/github-original", funTooltip: "My AI pair programmer 🤖" },
+      { name: "Gemini API", iconKey: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg", funTooltip: "Multimodal magic ✨" }
     ]
   },
   {
     title: "Backend & Cloud",
     icon: "database",
     skills: [
-      { name: "Node.js", iconKey: "nodejs/nodejs-original" },
-      { name: "Express.js", iconKey: "express/express-original" },
-      { name: "Firebase", iconKey: "firebase/firebase-plain" },
-      { name: "MongoDB", iconKey: "mongodb/mongodb-original" },
-      { name: "MySQL", iconKey: "mysql/mysql-original" }
-    ]
-  },
-  {
-    title: "Tools & DevOps",
-    icon: "tool",
-    skills: [
-      { name: "Git", iconKey: "git/git-original" },
-      { name: "Android Studio", iconKey: "android/android-original" },
-      { name: "Jira", iconKey: "jira/jira-original" },
-      { name: "Jest", iconKey: "jest/jest-plain" }
+      { name: "Node.js", iconKey: "nodejs/nodejs-original", funTooltip: "JS on the server? Yes please! 🟢" },
+      { name: "Express.js", iconKey: "express/express-original", funTooltip: "Fast & minimalist 🚂" },
+      { name: "Firebase", iconKey: "firebase/firebase-plain", funTooltip: "Backend as a Service 🔥" },
+      { name: "MongoDB", iconKey: "mongodb/mongodb-original", funTooltip: "NoSQL, no problem 🍃" },
+      { name: "MySQL", iconKey: "mysql/mysql-original", funTooltip: "Relationally yours 🐬" }
     ]
   }
 ];
@@ -206,4 +243,17 @@ export const CERTIFICATIONS: Certification[] = [
   { name: "React Native: Advance Concept", issuer: "Udemy" },
   { name: "AI & Generative AI: Executive Briefing", issuer: "Pluralsight" },
   { name: "Agile Software Development", issuer: "Coursera" }
+];
+
+export const MANUAL_BLOG_POSTS: any[] = [
+  {
+    title: "Universal Adaptive Bars: The Smart Cross-Platform Charting Library You’ve Been Waiting For",
+    pubDate: "2024-05-20 10:00:00", // Estimating date or using current date if unknown, user didn't specify. I'll use a recent date.
+    link: "https://sammeddoshi.medium.com/universal-adaptive-bars-the-smart-cross-platform-charting-library-youve-been-waiting-for-80501b0c0e3b",
+    guid: "universal-adaptive-bars-medium",
+    author: "Sammed Doshi",
+    thumbnail: "/universal-adaptive-bars.png",
+    description: "A deep dive into creating a truly cross-platform charting solution that works seamlessly on both React Web and React Native.",
+    categories: ["react", "react native", "library", "visx", "d3"]
+  }
 ];

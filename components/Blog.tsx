@@ -3,6 +3,7 @@ import { Section } from './Section';
 import { ExternalLink, Calendar, Tag, BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { BlogPost } from '../types';
+import { MANUAL_BLOG_POSTS } from '../constants';
 
 const TECH_KEYWORDS = [
   'technology', 'tech', 'programming', 'coding', 'software', 'development',
@@ -22,30 +23,49 @@ export const Blog: React.FC = () => {
       .then(res => res.json())
       .then(data => {
         if (data.status === 'ok') {
-          // Filter for tech related posts and limit to 4
-          const techPosts = data.items.filter((post: BlogPost) => {
+          // Filter for tech related posts and enhance thumbnail extraction
+          const techPosts = data.items.map((post: any) => {
+            // Attempt to extract image from description if thumbnail is missing
+            let thumbnail = post.thumbnail;
+            if (!thumbnail && post.description) {
+              const imgMatch = post.description.match(/<img[^>]+src="([^">]+)"/);
+              if (imgMatch) {
+                thumbnail = imgMatch[1];
+              }
+            }
+            return { ...post, thumbnail };
+          }).filter((post: BlogPost) => {
             // Check if any category/tag matches our tech keywords
-            const hasTechTag = post.categories.some(cat => 
+            const hasTechTag = post.categories.some(cat =>
               TECH_KEYWORDS.some(keyword => cat.toLowerCase().includes(keyword))
             );
             // Also check title as a fallback
-            const hasTechTitle = TECH_KEYWORDS.some(keyword => 
+            const hasTechTitle = TECH_KEYWORDS.some(keyword =>
               post.title.toLowerCase().includes(keyword)
             );
-            
+
             return hasTechTag || hasTechTitle;
           });
 
-          setPosts(techPosts.slice(0, 4));
+          // Merge manual posts with fetched posts
+          const allPosts = [...MANUAL_BLOG_POSTS, ...techPosts];
+
+          // Sort by date descending
+          allPosts.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+
+          setPosts(allPosts.slice(0, 4));
         } else {
-          setError(true);
+          // If API fails, at least show manual posts
+          setPosts(MANUAL_BLOG_POSTS as BlogPost[]);
         }
         setLoading(false);
       })
       .catch(() => {
-        setError(true);
+        // Fallback to manual posts on error
+        setPosts(MANUAL_BLOG_POSTS as BlogPost[]);
         setLoading(false);
       });
+
   }, []);
 
   // Helper to strip HTML tags for preview text
@@ -57,20 +77,21 @@ export const Blog: React.FC = () => {
   if (loading) {
     return (
       <Section id="blog" title="Recent Writing" subtitle="Thoughts on technology and development" className="min-h-[400px]">
-         <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
-         </div>
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
+        </div>
       </Section>
     );
   }
 
-  if (error || posts.length === 0) {
-    // If API fails or no posts, don't render the section (or you could render a fallback)
-    return null; 
+  // If no posts (fetched or manual), hide section
+  if (posts.length === 0) {
+    return null;
   }
 
+
   return (
-    <Section id="blog" title="Recent Writing" subtitle="Thoughts, tutorials, and insights on technology" className="bg-slate-50">
+    <Section id="blog" title="Recent Writing" subtitle="Thoughts, tutorials, and insights on technology" className="bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {posts.map((post, index) => (
           <motion.a
@@ -87,9 +108,9 @@ export const Blog: React.FC = () => {
             {/* Thumbnail Image */}
             <div className="relative h-56 overflow-hidden bg-slate-200">
               {post.thumbnail ? (
-                <img 
-                  src={post.thumbnail} 
-                  alt={post.title} 
+                <img
+                  src={post.thumbnail}
+                  alt={post.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
@@ -99,7 +120,7 @@ export const Blog: React.FC = () => {
                 </div>
               )}
               <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-slate-700 shadow-sm flex items-center gap-1">
-                 <ExternalLink size={12} /> Medium
+                <ExternalLink size={12} /> Medium
               </div>
             </div>
 
@@ -122,28 +143,28 @@ export const Blog: React.FC = () => {
               </p>
 
               <div className="mt-auto pt-4 border-t border-slate-100">
-                 <div className="flex flex-wrap gap-2">
-                   {post.categories.slice(0, 3).map((tag, i) => (
-                     <span key={i} className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-medium bg-primary-50 text-primary-700 border border-primary-100 uppercase tracking-wide">
-                       <Tag size={10} className="mr-1" />
-                       {tag}
-                     </span>
-                   ))}
-                 </div>
+                <div className="flex flex-wrap gap-2">
+                  {post.categories.slice(0, 3).map((tag, i) => (
+                    <span key={i} className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-medium bg-primary-50 text-primary-700 border border-primary-100 uppercase tracking-wide">
+                      <Tag size={10} className="mr-1" />
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.a>
         ))}
       </div>
-      
+
       <div className="mt-12 text-center">
-        <a 
-          href="https://sammeddoshi.medium.com/" 
-          target="_blank" 
+        <a
+          href="https://sammeddoshi.medium.com/"
+          target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors group"
         >
-          Read more on Medium 
+          Read more on Medium
           <ExternalLink size={16} className="transition-transform group-hover:translate-x-1" />
         </a>
       </div>

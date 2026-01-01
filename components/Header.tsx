@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Snowflake } from 'lucide-react';
+import { Menu, X, Snowflake, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 interface HeaderProps {
   toggleSnow: () => void;
@@ -8,8 +9,13 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ toggleSnow, isSnowing }) => {
+  const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,27 +38,28 @@ export const Header: React.FC<HeaderProps> = ({ toggleSnow, isSnowing }) => {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
+    { name: t('about'), href: '#about' },
+    { name: t('experience'), href: '#experience' },
+    { name: t('projects'), href: '#projects' },
+    { name: t('blog'), href: '#blog' },
+    { name: t('skills'), href: '#skills' },
+    { name: t('podcast_title'), href: '#podcast' }, // Added Podcast link
+    { name: t('contact'), href: '#contact' },
   ];
 
   const menuVariants = {
     closed: {
       opacity: 0,
-      transition: { 
-        staggerChildren: 0.05, 
+      transition: {
+        staggerChildren: 0.05,
         staggerDirection: -1,
         when: "afterChildren"
       }
     },
     open: {
       opacity: 1,
-      transition: { 
-        staggerChildren: 0.1, 
+      transition: {
+        staggerChildren: 0.1,
         delayChildren: 0.1,
         when: "beforeChildren"
       }
@@ -66,10 +73,9 @@ export const Header: React.FC<HeaderProps> = ({ toggleSnow, isSnowing }) => {
 
   return (
     <>
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-4' : 'bg-transparent py-6'
-        }`}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-4' : 'bg-transparent py-6'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
@@ -78,15 +84,14 @@ export const Header: React.FC<HeaderProps> = ({ toggleSnow, isSnowing }) => {
             </a>
 
             <div className="flex items-center gap-6">
-               {/* Desktop Nav */}
+              {/* Desktop Nav */}
               <nav className="hidden md:flex space-x-8">
                 {navLinks.map((link) => (
                   <a
                     key={link.name}
                     href={link.href}
-                    className={`text-sm font-medium transition-colors hover:text-primary-500 ${
-                      isScrolled ? 'text-slate-600' : 'text-slate-300'
-                    }`}
+                    className={`text-sm font-medium transition-colors hover:text-primary-500 ${isScrolled ? 'text-slate-600' : 'text-slate-300'
+                      }`}
                   >
                     {link.name}
                   </a>
@@ -94,20 +99,32 @@ export const Header: React.FC<HeaderProps> = ({ toggleSnow, isSnowing }) => {
               </nav>
 
               {/* Snow Toggle Button */}
-              <button 
+              <button
                 onClick={toggleSnow}
-                className={`p-2 rounded-full transition-colors duration-300 ${
-                  isSnowing 
-                    ? 'bg-blue-100 text-blue-500' 
-                    : isScrolled ? 'bg-slate-100 text-slate-500 hover:bg-slate-200' : 'bg-white/10 text-white hover:bg-white/20'
-                }`}
+                className={`p-2 rounded-full transition-colors duration-300 ${isSnowing
+                  ? 'bg-blue-100 text-blue-500'
+                  : isScrolled ? 'bg-slate-100 text-slate-500 hover:bg-slate-200' : 'bg-white/10 text-white hover:bg-white/20'
+                  }`}
                 title="Toggle Snow"
               >
                 <Snowflake size={20} />
               </button>
 
+              {/* Language Switcher */}
+              <div className="relative group">
+                <button className={`p-2 rounded-full transition-colors duration-300 font-bold ${isScrolled ? 'text-slate-600 hover:bg-slate-100' : 'text-white hover:bg-white/10'
+                  }`}>
+                  {i18n.language ? i18n.language.toUpperCase().substring(0, 2) : 'EN'}
+                </button>
+                <div className="absolute right-0 mt-2 w-32 bg-white rounded-xl shadow-xl overflow-hidden hidden group-hover:block transition-all transform origin-top-right z-50">
+                  <button onClick={() => changeLanguage('en')} className="block w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-600">English</button>
+                  <button onClick={() => changeLanguage('fr')} className="block w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-600">Français</button>
+                  <button onClick={() => changeLanguage('de')} className="block w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-primary-600">Deutsch</button>
+                </div>
+              </div>
+
               {/* Mobile Menu Button */}
-              <button 
+              <button
                 className="md:hidden p-2 z-50 relative"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label="Toggle menu"

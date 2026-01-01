@@ -2,10 +2,13 @@ import React from 'react';
 import { Download, Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { SOCIAL_LINKS } from '../constants';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const ThreeBackground = React.lazy(() => import('./ThreeBackground').then(module => ({ default: module.ThreeBackground })));
 
 export const Hero: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="relative min-h-screen flex items-center justify-center bg-slate-900 text-white overflow-hidden pt-24 pb-12">
 
@@ -24,7 +27,7 @@ export const Hero: React.FC = () => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
           </span>
-          <span className="text-sm font-medium text-slate-200">Open to new opportunities</span>
+          <span className="text-sm font-medium text-slate-200">{t('open_to_work')}</span>
         </motion.div>
 
         <motion.h1
@@ -42,7 +45,7 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-xl md:text-2xl text-slate-300 max-w-3xl mb-10 leading-relaxed"
         >
-          Senior Software Engineer specializing in scalable <span className="text-primary-400 font-semibold">React Native</span>, <span className="text-primary-400 font-semibold">TypeScript</span>, and <span className="text-primary-400 font-semibold">GenAI</span> solutions.
+          {t('hero_title')} <span className="text-primary-400 font-semibold">React Native</span>, <span className="text-primary-400 font-semibold">TypeScript</span>, and <span className="text-primary-400 font-semibold">GenAI</span>.
         </motion.p>
 
         <motion.div
@@ -55,25 +58,37 @@ export const Hero: React.FC = () => {
             href={SOCIAL_LINKS.github}
             target="_blank"
             rel="noreferrer"
-            className="p-3.5 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors border border-slate-700 text-white"
+            className="group relative p-3.5 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors border border-slate-700 text-white"
             aria-label="GitHub"
           >
+            <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-white text-slate-900 text-xs rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none shadow-lg z-20 whitespace-nowrap font-bold">
+              Where the magic (and bugs) happens 🪄
+              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45"></div>
+            </div>
             <Github size={24} />
           </a>
           <a
             href={SOCIAL_LINKS.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="p-3.5 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors border border-slate-700 text-white"
+            className="group relative p-3.5 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors border border-slate-700 text-white"
             aria-label="LinkedIn"
           >
+            <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-white text-slate-900 text-xs rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none shadow-lg z-20 whitespace-nowrap font-bold">
+              Let's link up! 🤝
+              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45"></div>
+            </div>
             <Linkedin size={24} />
           </a>
           <a
             href={`mailto:${SOCIAL_LINKS.email}`}
-            className="p-3.5 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors border border-slate-700 text-white"
+            className="group relative p-3.5 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors border border-slate-700 text-white"
             aria-label="Email"
           >
+            <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-white text-slate-900 text-xs rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 pointer-events-none shadow-lg z-20 whitespace-nowrap font-bold">
+              Slide into my inbox 📬
+              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white rotate-45"></div>
+            </div>
             <Mail size={24} />
           </a>
         </motion.div>
@@ -88,7 +103,7 @@ export const Hero: React.FC = () => {
             href="#projects"
             className="px-8 py-4 rounded-lg bg-primary-600 hover:bg-primary-500 text-white font-semibold transition-all hover:scale-105 shadow-lg shadow-primary-500/25 text-lg"
           >
-            View Projects
+            {t('view_projects')}
           </a>
           <a
             href="/Resume-Sammed-Doshi.pdf"
@@ -96,7 +111,7 @@ export const Hero: React.FC = () => {
             className="px-8 py-4 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold transition-all hover:scale-105 border border-slate-700 flex items-center justify-center gap-2 text-lg"
           >
             <Download size={20} />
-            Download Resume
+            {t('download_resume')}
           </a>
         </motion.div>
 
@@ -107,7 +122,7 @@ export const Hero: React.FC = () => {
           className="mt-20 flex items-center text-slate-400 text-sm"
         >
           <MapPin size={16} className="mr-2" />
-          <span>Based in India • Available Worldwide</span>
+          <span>{t('based_in')}</span>
         </motion.div>
       </div>
     </div>

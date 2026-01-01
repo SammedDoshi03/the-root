@@ -21,12 +21,13 @@ export interface Experience {
 export interface Skill {
   name: string;
   iconKey: string; // Key for devicon or custom mapping
+  funTooltip?: string;
 }
 
 export interface SkillCategory {
   title: string;
   skills: Skill[];
-  icon: 'code' | 'database' | 'layout' | 'tool';
+  icon: 'code' | 'database' | 'layout' | 'tool' | 'ai' | 'cicd';
 }
 
 export interface Education {
