@@ -1,14 +1,17 @@
 import React from 'react';
 import { Download, Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { SOCIAL_LINKS } from '../constants';
-import { ThreeBackground } from './ThreeBackground';
 import { motion } from 'framer-motion';
+
+const ThreeBackground = React.lazy(() => import('./ThreeBackground').then(module => ({ default: module.ThreeBackground })));
 
 export const Hero: React.FC = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center bg-slate-900 text-white overflow-hidden pt-24 pb-12">
-      
-      <ThreeBackground />
+
+      <React.Suspense fallback={<div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900" />}>
+        <ThreeBackground />
+      </React.Suspense>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
         <motion.div
@@ -24,7 +27,7 @@ export const Hero: React.FC = () => {
           <span className="text-sm font-medium text-slate-200">Open to new opportunities</span>
         </motion.div>
 
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -32,8 +35,8 @@ export const Hero: React.FC = () => {
         >
           Sammed Doshi
         </motion.h1>
-        
-        <motion.p 
+
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -42,31 +45,31 @@ export const Hero: React.FC = () => {
           Senior Software Engineer specializing in scalable <span className="text-primary-400 font-semibold">React Native</span>, <span className="text-primary-400 font-semibold">TypeScript</span>, and <span className="text-primary-400 font-semibold">GenAI</span> solutions.
         </motion.p>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           className="flex flex-wrap justify-center gap-5 mb-14"
         >
-          <a 
-            href={SOCIAL_LINKS.github} 
-            target="_blank" 
+          <a
+            href={SOCIAL_LINKS.github}
+            target="_blank"
             rel="noreferrer"
             className="p-3.5 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors border border-slate-700 text-white"
             aria-label="GitHub"
           >
             <Github size={24} />
           </a>
-          <a 
-            href={SOCIAL_LINKS.linkedin} 
-            target="_blank" 
+          <a
+            href={SOCIAL_LINKS.linkedin}
+            target="_blank"
             rel="noreferrer"
             className="p-3.5 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors border border-slate-700 text-white"
             aria-label="LinkedIn"
           >
             <Linkedin size={24} />
           </a>
-          <a 
+          <a
             href={`mailto:${SOCIAL_LINKS.email}`}
             className="p-3.5 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors border border-slate-700 text-white"
             aria-label="Email"
@@ -75,28 +78,29 @@ export const Hero: React.FC = () => {
           </a>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
           className="flex flex-col sm:flex-row gap-5"
         >
-          <a 
+          <a
             href="#projects"
             className="px-8 py-4 rounded-lg bg-primary-600 hover:bg-primary-500 text-white font-semibold transition-all hover:scale-105 shadow-lg shadow-primary-500/25 text-lg"
           >
             View Projects
           </a>
-          <button 
+          <a
+            href="/Resume-Sammed-Doshi.pdf"
+            download="Resume-Sammed-Doshi.pdf"
             className="px-8 py-4 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold transition-all hover:scale-105 border border-slate-700 flex items-center justify-center gap-2 text-lg"
-            onClick={() => window.print()}
           >
             <Download size={20} />
-            Save Resume
-          </button>
+            Download Resume
+          </a>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
